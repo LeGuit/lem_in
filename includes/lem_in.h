@@ -4,6 +4,14 @@
 
 # include "libft.h"
 
+typedef int			(*t_fct)(char *line, t_data *data);
+
+typedef struct 		s_room
+{
+	int				coord[2];
+	int				spec;//0 random, 1 start, -1 end
+}					t_room;
+
 typedef struct		s_data
 {
 	t_vect			anthill;
