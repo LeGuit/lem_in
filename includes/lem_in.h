@@ -17,15 +17,21 @@ typedef struct 		s_room
 typedef struct		s_data
 {
 	t_vect			anthill;
-	t_vect			comments;
+	char			*com;
 	int				nbroom;
 	int				nbpath;
 	int				nbants;
+	int				com;
 }					t_data;
 
 int					check_com(char *line);
 int					check_ants(char *line);
 int					check_rooms(char *line);
 int					check_hubs(char *line);
+
+int					save_com(char *line, t_data *data);
+int					save_ants(char *line, t_data *data);
+int					save_rooms(char *line, t_data *data);
+int					save_hubs(char *line, t_data *data);
 
 #endif

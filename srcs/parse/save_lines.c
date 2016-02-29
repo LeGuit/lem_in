@@ -1,5 +1,7 @@
 #include "lem_in.h"
 
+void				save_com(char *line, t_data *data)
+
 void				save_ants(char *line, t_data *data)
 {
 	data->nbants = ft_atoi(line);
