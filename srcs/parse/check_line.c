@@ -1,4 +1,13 @@
-#include "lem-in"
+#include "lem_in.h"
+
+int					check_com(char *line)
+{
+	if (line[0] != '#')
+		return (0);
+	if (line[1] == '#')
+		return (0);
+	return (1);
+}
 
 int					check_ants(char *line)
 {
@@ -18,6 +27,8 @@ int					check_rooms(char *line)
 {
 	char			*tmp;
 
+	if (line[0] == 'L' || line[0] == #)
+		return (1);
 	if (!(tmp = ft_strchr(line, ' ')))
 		return (1);
 	while (*(tmp + 1) != ' ' && *tmp)
