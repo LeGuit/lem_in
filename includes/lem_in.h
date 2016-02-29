@@ -4,7 +4,8 @@
 
 # include "libft.h"
 
-typedef int			(*t_fct)(char *line, t_data *data);
+typedef int			(*t_get_fct)(char *line, t_data *data);
+typedef int			(*t_check_fct)(char *line);
 
 typedef struct 		s_room
 {

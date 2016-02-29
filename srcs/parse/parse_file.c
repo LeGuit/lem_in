@@ -1,6 +1,6 @@
 #include "lem-in"
 
-static t_funct const	g_check_tab[3] =
+static t_check_fct const	g_check_tab[3] =
 {
 	[0] = &check_ants,
 	[1] = &check_rooms,
@@ -8,7 +8,7 @@ static t_funct const	g_check_tab[3] =
 	[3] = &check_hubs
 };
 
-static t_funct const	g_get_info[3] =
+static t_get_fct const	g_get_info[3] =
 {
 	[0] = &get_ants,
 	[1] = &get_rooms,
@@ -28,10 +28,10 @@ void			get_file(char *file, t_data *data)
 		error();
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
-		if (g_check_tab[state_parse](line, data))
-			&& (ret = g_check_tab[state_parse + 1](line, data)))
+		if (g_check_tab[state_parse](line)
+			&& (ret = g_check_tab[state_parse + 1](line))
 		{
-			error();
+			error();//debug cause must continue process
 			break ;
 		}	
 		if (!ret)
