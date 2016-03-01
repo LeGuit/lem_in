@@ -50,3 +50,16 @@ void				init_matrix(char *line, t_data *data)
 		matrix[i] = ft_memalloc(data->nbroom);
 		i++;
 	}
+}
+
+void				save_hubs(char *line, t_data *data)
+{
+	int				x;
+	int				y;
+	char			*tmp;
+
+	x = ft_atoi(line);
+	tmp = ft_strchr(line, '-') + 1;
+	y = ft_atoi(tmp);
+	data->matrix[x][y] = 1;
+}

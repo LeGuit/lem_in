@@ -39,5 +39,7 @@ int					save_hubs(char *line, t_data *data);
 
 void				ants_comment(t_data *data);
 void				room_comment(t_data *data, t_room *r);
+void				init_matrix(char *line, t_data *data);
+void				save_hubs(char *line, t_data *data);
 
 #endif
