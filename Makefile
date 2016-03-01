@@ -23,7 +23,11 @@ OBJS_DIR =	objs
 
 LIBS =	libft/libft.a
 
-LIST =	main
+LIST =	main \
+		parse/check_line \
+		parse/coments \
+		parse/parse_file \
+		parse/save_lines
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(addsuffix .c, $(LIST)))
 OBJS := $(addprefix $(OBJS_DIR)/, $(addsuffix .o, $(LIST)))

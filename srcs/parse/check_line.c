@@ -4,8 +4,6 @@ int					check_com(char *line)
 {
 	if (line[0] != '#')
 		return (0);
-	if (line[1] == '#')
-		return (0);
 	return (1);
 }
 
