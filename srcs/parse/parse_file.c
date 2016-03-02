@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-static t_check_fct const	g_check_tab[5] =
+static t_check_fct const	g_check_tab[] =
 {
 	[0] = &check_com,
 	[1] = &check_ants,
@@ -9,7 +9,7 @@ static t_check_fct const	g_check_tab[5] =
 	[4] = &check_hubs
 };
 
-static t_get_fct const	g_get_info[4] =
+static t_get_fct const	g_get_info[] =
 {
 	[0] = &save_com,
 	[1] = &save_ants,
@@ -20,9 +20,11 @@ static t_get_fct const	g_get_info[4] =
 
 static int			check_func(char *line, t_data* data)
 {
+	int				ret;
+	
 	if (g_check_tab[data->state](line)
 		&& (ret = g_check_tab[data->state + 1](line))
-	return (1);
+		return (1);
 	if (!ret)
 		data->state++;//start like this
 	g_get_info[data->state](line, data);
