@@ -1,16 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lem_in.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/07 15:32:44 by gwoodwar          #+#    #+#             */
+/*   Updated: 2016/03/07 15:32:48 by gwoodwar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef _LEM_IN_H
 # define _LEM_IN_H
 
 # include "libft.h"
 
-
-
-typedef struct 		s_room
+typedef struct		s_room
 {
 	char			*name;
 	char			*com;
-	int				spec;//0 random, 1 start, -1 end
+	int				spec;
+	int				id;
 	int				coord[2];
 }					t_room;
 
@@ -48,6 +58,7 @@ void				save_hubs(char *line, t_data *data);
 void				error_input(void);
 void				error_open(void);
 void				error_malloc(void);
+void				error_hubs(void);
 
 void				get_file(char *file, t_data *data);
 
@@ -56,5 +67,6 @@ void				get_file(char *file, t_data *data);
 */
 void				print_data(t_data *data);
 void				print_room(t_room *r);
+void				print_matrix(t_data *data);
 
 #endif

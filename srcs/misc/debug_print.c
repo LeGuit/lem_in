@@ -14,8 +14,30 @@
 
 void				print_room(t_room *r)
 {
-	ft_printf("name: %s\nx: %d\ty: %d\ncom: %s\n",
-		r->name, r->coord[0], r->coord[1], r->com);
+	ft_printf("\tname: %s\n\tx: %d\ty: %d\n\tcom: %s\tspec: %d\tid: %d\n",
+		r->name, r->coord[0], r->coord[1], r->com, r->spec, r->id);
+}
+
+void				print_matrix(t_data *data)
+{
+	int				i;
+	int				j;
+
+	i = 0;
+	while (i < data->nbroom)
+	{
+		j = 0;
+		while (j < data->nbroom)
+		{
+			if (!data->matrix[i][j])
+				ft_printf(". ");
+			else
+				ft_printf("X ");
+			j++;
+		}
+		ft_printf("\n");
+		i++;
+	}
 }
 
 void				print_data(t_data *data)
@@ -24,4 +46,6 @@ void				print_data(t_data *data)
 		data->nbants, data->nbroom, data->nbpath);
 	ft_printf("ROOMS:\n");
 	ft_vect_print(&data->anthill, print_room);
+	ft_printf("MATRIX:\n");
+	print_matrix(data);
 }

@@ -30,3 +30,8 @@ void				error_malloc(void)
 	ft_putendl_fd("lem_in: malloc error", 2);
 	exit(0);
 }
+
+void				error_hubs(void)
+{
+	ft_putendl_fd("lem_in: wrong hub name", 2);
+}

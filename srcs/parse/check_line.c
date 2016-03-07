@@ -45,7 +45,7 @@ int					check_rooms(char *line)
 	{
 		if (!ft_isdigit(*(tmp + 1)))
 			return (1);
-			tmp++;
+		tmp++;
 	}
 	if (!tmp)
 		return (1);
@@ -53,26 +53,16 @@ int					check_rooms(char *line)
 	{
 		if (!ft_isdigit(*(tmp + 1)))
 			return (1);
-			tmp++;
+		tmp++;
 	}
 	return (0);
 }
 
 int					check_hubs(char *line)
 {
-	int				i;
-
-	i = 0;
-	if (!ft_strchr(line, ' '))
-		return (0);
-	while (ft_isdigit(line[i]))
-		i++;
-	if (line[i] != '-')
+	if (!ft_strchr(line, '-'))
 		return (1);
-	i++;
-	while (ft_isdigit(line[i]))
-		i++;
-	if (line[i])
+	if (ft_strchr(line, ' '))
 		return (1);
 	return (0);
 }

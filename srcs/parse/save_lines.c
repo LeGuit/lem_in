@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
+#define CAST(type, ptr)				((type)(ptr))
 
 void				save_com(char *line, t_data *data)
 {
@@ -22,7 +23,6 @@ void				save_com(char *line, t_data *data)
 		error_malloc();
 	data->com[size] = 0;
 	ft_strncpy(data->com, line, size);
-	ft_printf("data->com: %s\n", data->com);
 }
 
 void				save_ants(char *line, t_data *data)
@@ -39,6 +39,7 @@ void				save_rooms(char *line, t_data *data)
 	t_room			r;
 
 	r.spec = 0;
+	r.id = data->nbroom;
 	data->nbroom++;
 	r.com = 0;
 	if (data->com)
@@ -65,6 +66,7 @@ void				init_matrix(char *line, t_data *data)
 	while (i < data->nbroom)
 	{
 		data->matrix[i] = (char *)malloc(data->nbroom);
+		ft_bzero(data->matrix[i], data->nbroom);
 		i++;
 	}
 	data->state++;
@@ -75,14 +77,24 @@ void				save_hubs(char *line, t_data *data)
 {
 	int				x;
 	int				y;
-	char			*tmp;
+	size_t			i;
+	char			*cursor;
+	t_room			*r;
 
-	x = ft_atoi(line);
-	tmp = ft_strchr(line, '-') + 1;
-	y = ft_atoi(tmp);
-	if (data->matrix[x][y] == 0)
+	x = -1;
+	y = -1;
+	cursor = ft_strchr(line, '-');
+	i = 0;
+	while (i < data->anthill.size)
 	{
-		data->matrix[x][y] = '1';
-		data->nbpath++;
+		r = CAST(t_room *, ft_vect_at(&data->anthill, i));
+		if (!ft_strncmp(r->name, line, cursor - line))
+			x = r->id;
+		if (!ft_strcmp(r->name, cursor + 1))
+			y = r->id;
+		i++;
 	}
+	if (x == -1 || y == -1)
+		error_hubs();
+	data->matrix[x][y] = 'X';
 }

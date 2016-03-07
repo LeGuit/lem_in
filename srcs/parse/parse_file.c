@@ -31,7 +31,7 @@ static t_get_fct const		g_get_info[] =
 	[4] = &save_hubs
 };
 
-static int			check_func(char *line, t_data* data)
+static int			check_func(char *line, t_data *data)
 {
 	int				ret;
 
@@ -41,7 +41,6 @@ static int			check_func(char *line, t_data* data)
 		return (1);
 	if (!ret)
 		data->state++;
-	ft_printf("state: %d\n", data->state);
 	g_get_info[data->state](line, data);
 	return (0);
 }
