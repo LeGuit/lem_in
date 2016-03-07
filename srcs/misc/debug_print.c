@@ -12,6 +12,8 @@
 
 #include "lem_in.h"
 
+#define CAST(type, ptr)				((type)(ptr))
+
 void				print_room(t_room *r)
 {
 	ft_printf("\tname: %s\n\tx: %d\ty: %d\n\tcom: %s\tspec: %d\tid: %d\n",
@@ -22,10 +24,13 @@ void				print_matrix(t_data *data)
 {
 	int				i;
 	int				j;
+	t_room			*r;
 
 	i = 0;
 	while (i < data->nbroom)
 	{
+		r = CAST(t_room *, ft_vect_at(&data->anthill, i));
+		ft_printf("%s\t", r->name);
 		j = 0;
 		while (j < data->nbroom)
 		{

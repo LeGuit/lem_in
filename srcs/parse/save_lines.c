@@ -97,4 +97,5 @@ void				save_hubs(char *line, t_data *data)
 	if (x == -1 || y == -1)
 		error_hubs();
 	data->matrix[x][y] = 'X';
+	data->matrix[y][x] = 'X';
 }
