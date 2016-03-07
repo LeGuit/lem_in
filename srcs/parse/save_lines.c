@@ -21,8 +21,8 @@ void				save_com(char *line, t_data *data)
 	if (!data->com)
 		error_malloc();
 	data->com[size] = 0;
-	ft_printf("data->com: %s\n", data->com);
 	ft_strncpy(data->com, line, size);
+	ft_printf("data->com: %s\n", data->com);
 }
 
 void				save_ants(char *line, t_data *data)
@@ -40,6 +40,7 @@ void				save_rooms(char *line, t_data *data)
 
 	r.spec = 0;
 	data->nbroom++;
+	r.com = 0;
 	if (data->com)
 		room_comment(data, &r);
 	i = 0;
@@ -59,14 +60,15 @@ void				init_matrix(char *line, t_data *data)
 {
 	int				i;
 
-	(void)line;
-	data->matrix = ft_memalloc(data->nbroom);
+	data->matrix = (char **)malloc(data->nbroom * sizeof(char *));
 	i = 0;
 	while (i < data->nbroom)
 	{
-		data->matrix[i] = ft_memalloc(data->nbroom);
+		data->matrix[i] = (char *)malloc(data->nbroom);
 		i++;
 	}
+	data->state++;
+	save_hubs(line, data);
 }
 
 void				save_hubs(char *line, t_data *data)
@@ -78,5 +80,9 @@ void				save_hubs(char *line, t_data *data)
 	x = ft_atoi(line);
 	tmp = ft_strchr(line, '-') + 1;
 	y = ft_atoi(tmp);
-	data->matrix[x][y] = 1;
+	if (data->matrix[x][y] == 0)
+	{
+		data->matrix[x][y] = '1';
+		data->nbpath++;
+	}
 }

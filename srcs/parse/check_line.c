@@ -15,8 +15,8 @@
 int					check_com(char *line)
 {
 	if (line[0] != '#')
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }
 
 int					check_ants(char *line)
@@ -74,5 +74,11 @@ int					check_hubs(char *line)
 		i++;
 	if (line[i])
 		return (1);
+	return (0);
+}
+
+int					check_nothing(char *line)
+{
+	(void)line;
 	return (0);
 }

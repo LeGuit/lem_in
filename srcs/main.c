@@ -14,7 +14,10 @@
 
 static void			init_data(t_data *data)
 {
-	data->state = 0;
+	data->state = 1;
+	data->nbpath = 0;
+	data->nbroom = 0;
+	data->com = 0;
 	data->anthill = VECT_INI(t_room);
 }
 

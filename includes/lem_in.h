@@ -9,8 +9,8 @@
 typedef struct 		s_room
 {
 	char			*name;
-	int				spec;//0 random, 1 start, -1 end
 	char			*com;
+	int				spec;//0 random, 1 start, -1 end
 	int				coord[2];
 }					t_room;
 
@@ -33,6 +33,7 @@ int					check_com(char *line);
 int					check_ants(char *line);
 int					check_rooms(char *line);
 int					check_hubs(char *line);
+int					check_nothing(char *line);
 
 void				save_com(char *line, t_data *data);
 void				save_ants(char *line, t_data *data);
@@ -54,5 +55,6 @@ void				get_file(char *file, t_data *data);
 ** DEBUG
 */
 void				print_data(t_data *data);
+void				print_room(t_room *r);
 
 #endif

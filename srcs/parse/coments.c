@@ -16,6 +16,7 @@ void				ants_comment(t_data *data)
 {
 	data->antcom = ft_strdup(data->com);
 	free(data->com);
+	data->com = 0;
 }
 
 void				room_comment(t_data *data, t_room *r)
@@ -26,4 +27,5 @@ void				room_comment(t_data *data, t_room *r)
 		r->spec = -1;
 	r->com = ft_strdup(data->com);
 	free(data->com);
+	data->com = 0;
 }
