@@ -1,18 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   coments.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/07 12:15:18 by gwoodwar          #+#    #+#             */
+/*   Updated: 2016/03/07 12:15:19 by gwoodwar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 void				ants_comment(t_data *data)
 {
-	data->ant_com = ft_strdup(data->com);
+	data->antcom = ft_strdup(data->com);
 	free(data->com);
 }
 
 void				room_comment(t_data *data, t_room *r)
 {
 	if (ft_strcmp(data->com, "##start") == 0)
-		r.spec = 1;
+		r->spec = 1;
 	else if (ft_strcmp(data->com, "##end") == 0)
-		r.spec = -1;
-	else
-		r.com = ft_strdup(data->com);
+		r->spec = -1;
+	r->com = ft_strdup(data->com);
 	free(data->com);
 }

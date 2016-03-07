@@ -4,8 +4,7 @@
 
 # include "libft.h"
 
-typedef void		(*t_get_fct)(char *line, t_data *data);
-typedef int			(*t_check_fct)(char *line);
+
 
 typedef struct 		s_room
 {
@@ -27,19 +26,33 @@ typedef struct		s_data
 	int				state;
 }					t_data;
 
+typedef void		(*t_get_fct)(char *line, t_data *data);
+typedef int			(*t_check_fct)(char *line);
+
 int					check_com(char *line);
 int					check_ants(char *line);
 int					check_rooms(char *line);
 int					check_hubs(char *line);
 
-int					save_com(char *line, t_data *data);
-int					save_ants(char *line, t_data *data);
-int					save_rooms(char *line, t_data *data);
-int					save_hubs(char *line, t_data *data);
+void				save_com(char *line, t_data *data);
+void				save_ants(char *line, t_data *data);
+void				save_rooms(char *line, t_data *data);
+void				save_hubs(char *line, t_data *data);
 
 void				ants_comment(t_data *data);
 void				room_comment(t_data *data, t_room *r);
 void				init_matrix(char *line, t_data *data);
 void				save_hubs(char *line, t_data *data);
+
+void				error_input(void);
+void				error_open(void);
+void				error_malloc(void);
+
+void				get_file(char *file, t_data *data);
+
+/*
+** DEBUG
+*/
+void				print_data(t_data *data);
 
 #endif

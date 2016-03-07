@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_file.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/07 12:15:22 by gwoodwar          #+#    #+#             */
+/*   Updated: 2016/03/07 12:16:26 by gwoodwar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
+#include <fcntl.h>
 
 static t_check_fct const	g_check_tab[] =
 {
@@ -9,7 +22,7 @@ static t_check_fct const	g_check_tab[] =
 	[4] = &check_hubs
 };
 
-static t_get_fct const	g_get_info[] =
+static t_get_fct const		g_get_info[] =
 {
 	[0] = &save_com,
 	[1] = &save_ants,
@@ -21,9 +34,10 @@ static t_get_fct const	g_get_info[] =
 static int			check_func(char *line, t_data* data)
 {
 	int				ret;
-	
+
+	ret = 0;
 	if (g_check_tab[data->state](line)
-		&& (ret = g_check_tab[data->state + 1](line))
+		&& (ret = g_check_tab[data->state + 1](line)))
 		return (1);
 	if (!ret)
 		data->state++;//start like this
@@ -37,16 +51,17 @@ void				get_file(char *file, t_data *data)
 	char			*line;
 	int				ret;
 
-	state_parse = 1;//1 after nb ants etc
 	if ((fd = open(file, O_RDONLY)) == -1)
-		error();
+		error_open();
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
-		if (g_check_tab[0])
+		if (g_check_tab[0](line))
 			g_get_info[0](line, data);
 		else if (check_func(line, data))
 			break ;
+		ft_printf("state: %d\n", data->state);
 		ft_printf("'debug' line: %s\n", line);
+		line = 0;
 	}
 	close(fd);
 }

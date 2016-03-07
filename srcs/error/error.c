@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug_print.c                                      :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/07 12:29:49 by gwoodwar          #+#    #+#             */
-/*   Updated: 2016/03/07 12:29:57 by gwoodwar         ###   ########.fr       */
+/*   Created: 2016/03/07 12:14:01 by gwoodwar          #+#    #+#             */
+/*   Updated: 2016/03/07 12:14:10 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void				print_room(t_room *r)
+void				error_input(void)
 {
-	ft_printf("name: %s\nx: %d\ty: %d\ncom: %s\n",
-		r->name, r->coord[0], r->coord[1], r->com);
+	ft_putendl_fd("lem_in: wrong input", 2);
+	ft_putendl_fd("usage: ./lem_in [file]", 2);
+	exit(0);
 }
 
-void				print_data(t_data *data)
+void				error_open(void)
 {
-	ft_printf("\nants: %d\tnbrooms: %d\tnbpath: %d\n",
-		data->nbants, data->nbroom, data->nbpath);
-	ft_printf("ROOMS:\n");
-	ft_vect_print(&data->anthill, print_room);
+	ft_putendl_fd("lem_in: fail to open file", 2);
+	exit(0);
+}
+
+void				error_malloc(void)
+{
+	ft_putendl_fd("lem_in: malloc error", 2);
+	exit(0);
 }
