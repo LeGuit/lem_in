@@ -45,14 +45,21 @@ void				square_mat_product(int **mat1, int **mat2, int size)
 void				nb_path(t_data *data, t_path *path)
 {
 	int				i;
-	int				**mat;			
+	int				**mat;
+	int				flag;
 
+	flag = 1;
 	mat = init_nbpath_mat(data);
 	i = 0;
 	while (i < data->nbroom)
 	{
-		square_mat_product(mat, mat, data->nbroom);
+		mat += square_mat_product(mat, data->matrix, data->nbroom);
 		i++;
+		if (mat[data->idstart][data->idend] == 1 && flag == 1)
+		{
+			path->minpath = i;
+			flag = 0;
+		}
 	}
 	path->nbpath = mat(data->idstart, data->idend);
 	if (path->nbpath == 0)

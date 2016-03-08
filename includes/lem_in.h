@@ -18,6 +18,7 @@
 typedef struct		s_path
 {
 	int				nbpath;
+	int				minpath;
 	int				**hubs;//hun[x][0] = size path
 }					t_path;
 
