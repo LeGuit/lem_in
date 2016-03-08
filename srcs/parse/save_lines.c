@@ -38,12 +38,9 @@ void				save_rooms(char *line, t_data *data)
 	int				i;
 	t_room			r;
 
-	r.spec = 0;
 	r.id = data->nbroom;
 	data->nbroom++;
 	r.com = 0;
-	if (data->com)
-		room_comment(data, &r);
 	i = 0;
 	while (line[i] != ' ')
 		i++;
@@ -54,6 +51,8 @@ void				save_rooms(char *line, t_data *data)
 	while (line[i] != ' ')
 		i++;
 	r.coord[1] = ft_atoi(&line[++i]);
+	if (data->com)
+		room_comment(data, &r);
 	ft_vect_push_back(&data->anthill, &r);
 }
 

@@ -15,11 +15,18 @@
 
 # include "libft.h"
 
+typedef struct		s_path
+{
+	int				nbstart;
+	int				nbend;
+	int				nbpath;
+	int				**hubs;//hun[x][0] = size path
+}					t_path;
+
 typedef struct		s_room
 {
 	char			*name;
 	char			*com;
-	int				spec;
 	int				id;
 	int				coord[2];
 }					t_room;
@@ -34,8 +41,13 @@ typedef struct		s_data
 	int				nbants;
 	char			*antcom;
 	int				state;
+	int				idstart;
+	int				idend;
 }					t_data;
 
+/*
+** PARSING
+*/
 typedef void		(*t_get_fct)(char *line, t_data *data);
 typedef int			(*t_check_fct)(char *line);
 
@@ -55,12 +67,22 @@ void				room_comment(t_data *data, t_room *r);
 void				init_matrix(char *line, t_data *data);
 void				save_hubs(char *line, t_data *data);
 
+void				get_file(char *file, t_data *data);
+
+/*
+** ERROR
+*/
 void				error_input(void);
 void				error_open(void);
 void				error_malloc(void);
 void				error_hubs(void);
 
-void				get_file(char *file, t_data *data);
+
+/*
+** PATH FINDING
+*/
+void				path_finding(t_data *data);
+void				nb_path(t_data *data, t_path *path);
 
 /*
 ** DEBUG

@@ -29,7 +29,9 @@ LIST =	main \
 		parse/parse_file \
 		parse/save_lines \
 		error/error \
-		misc/debug_print
+		find_path/path_finding \
+		find_path/nb_paths \
+		misc/debug_print 
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(addsuffix .c, $(LIST)))
 OBJS := $(addprefix $(OBJS_DIR)/, $(addsuffix .o, $(LIST)))

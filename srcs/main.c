@@ -30,5 +30,6 @@ int					main(int ac, char **av)
 	init_data(&data);
 	get_file(av[1], &data);
 	print_data(&data);
+	// path_finding(&data);
 	return (0);
 }
