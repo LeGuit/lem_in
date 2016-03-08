@@ -31,5 +31,4 @@ void				path_finding(t_data *data)
 	init_path(&path);
 	nb_paths(data, &path);
 	init_hubs(&path, data);
-
 }

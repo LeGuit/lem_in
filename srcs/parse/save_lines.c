@@ -60,12 +60,12 @@ void				init_matrix(char *line, t_data *data)
 {
 	int				i;
 
-	data->matrix = (char **)malloc(data->nbroom * sizeof(char *));
+	data->matrix = (int **)malloc(data->nbroom * sizeof(int *));
 	i = 0;
 	while (i < data->nbroom)
 	{
-		data->matrix[i] = (char *)malloc(data->nbroom);
-		ft_bzero(data->matrix[i], data->nbroom);
+		data->matrix[i] = (int *)malloc(data->nbroom * sizeof(int));
+		ft_bzero(data->matrix[i], data->nbroom/**sizeof(int)*/);
 		i++;
 	}
 	data->state++;
@@ -95,6 +95,6 @@ void				save_hubs(char *line, t_data *data)
 	}
 	if (x == -1 || y == -1)
 		error_hubs();
-	data->matrix[x][y] = 'X';
-	data->matrix[y][x] = 'X';
+	data->matrix[x][y] = 1;
+	data->matrix[y][x] = 1;
 }

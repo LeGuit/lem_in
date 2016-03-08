@@ -17,8 +17,6 @@
 
 typedef struct		s_path
 {
-	int				nbstart;
-	int				nbend;
 	int				nbpath;
 	int				**hubs;//hun[x][0] = size path
 }					t_path;
@@ -34,7 +32,7 @@ typedef struct		s_room
 typedef struct		s_data
 {
 	t_vect			anthill;
-	char			**matrix;
+	int				**matrix;
 	char			*com;
 	int				nbroom;
 	int				nbpath;

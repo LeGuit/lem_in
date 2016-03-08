@@ -28,7 +28,8 @@ LIST =	main \
 		parse/coments \
 		parse/parse_file \
 		parse/save_lines \
-		error/error \
+		error/error_input \
+		error/error_path \
 		find_path/path_finding \
 		find_path/nb_paths \
 		misc/debug_print 
