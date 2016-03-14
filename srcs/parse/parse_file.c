@@ -45,15 +45,12 @@ static int			check_func(char *line, t_data *data)
 	return (0);
 }
 
-void				get_file(char *file, t_data *data)
+void				get_file(t_data *data)
 {
-	int				fd;
 	char			*line;
 	int				ret;
 
-	if ((fd = open(file, O_RDONLY)) == -1)
-		error_open();
-	while ((ret = get_next_line(fd, &line)) > 0)
+	while ((ret = get_next_line(0, &line)) > 0)
 	{
 		if (g_check_tab[0](line))
 			g_get_info[0](line, data);
@@ -62,5 +59,4 @@ void				get_file(char *file, t_data *data)
 		ft_printf("'debug' line: %s\n", line);
 		line = 0;
 	}
-	close(fd);
 }

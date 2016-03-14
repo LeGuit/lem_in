@@ -60,7 +60,7 @@ void				error_open(void);
 void				error_malloc(void);
 void				error_hubs(void);
 
-void				get_file(char *file, t_data *data);
+void				get_file(t_data *data);
 
 /*
 ** DEBUG
