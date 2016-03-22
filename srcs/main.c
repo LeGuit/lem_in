@@ -28,5 +28,6 @@ int					main(void)
 	init_data(&data);
 	get_file(&data);
 	print_data(&data);
+	// path_finding(&data);
 	return (0);
 }
