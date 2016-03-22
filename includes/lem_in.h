@@ -17,7 +17,7 @@
 
 typedef struct		s_path
 {
-	int				nbpath;
+	int				maxflow;
 	int				minpath;
 	int				*hubs;
 }					t_path;
@@ -33,6 +33,7 @@ typedef struct		s_room
 typedef struct		s_data
 {
 	t_vect			anthill;
+	t_vect			input;
 	int				**matrix;
 	char			*com;
 	int				nbroom;
@@ -84,6 +85,7 @@ void				get_file(t_data *data);
 /*
 ** DEBUG
 */
+void				print_input(char **v);
 void				print_data(t_data *data);
 void				print_room(t_room *r);
 void				print_matrix(t_data *data);

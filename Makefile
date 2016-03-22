@@ -31,7 +31,8 @@ LIST =	main \
 		error/error_input \
 		error/error_path \
 		find_path/path_finding \
-		misc/debug_print 
+		misc/debug_print \
+		misc/print
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(addsuffix .c, $(LIST)))
 OBJS := $(addprefix $(OBJS_DIR)/, $(addsuffix .o, $(LIST)))

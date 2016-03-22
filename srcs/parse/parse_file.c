@@ -45,6 +45,16 @@ static int			check_func(char *line, t_data *data)
 	return (0);
 }
 
+static void			save_input(char *l, t_data *data)
+{
+	char			*savel;
+
+	savel = ft_strdup(l);
+	if (!savel)
+		error_malloc();
+	ft_vect_push_back(&data->input, &savel);
+}
+
 void				get_file(t_data *data)
 {
 	char			*line;
@@ -52,11 +62,13 @@ void				get_file(t_data *data)
 
 	while ((ret = get_next_line(0, &line)) > 0)
 	{
+		save_input(line, data);
 		if (g_check_tab[0](line))
 			g_get_info[0](line, data);
 		else if (check_func(line, data))
 			break ;
-		ft_printf("'debug' line: %s\n", line);
 		line = 0;
 	}
+	if (ret == 0)
+		ft_vect_print(&data->input, print_input);
 }

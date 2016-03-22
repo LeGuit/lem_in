@@ -17,7 +17,7 @@ static void			init_path(t_path *path, t_data *data)
 			p_end++;
 		i++;
 	}
-	path->nbpath = MIN(p_start, p_end);
+	path->maxflow = MIN(p_start, p_end);
 
 }
 
@@ -25,11 +25,11 @@ static void			init_hubs(t_path *path, t_data *data)
 {
 	int				i;
 
-	path->hubs = (int *)malloc(sizeof(int) * path->nbpath * data->nbroom);
+	path->hubs = (int *)malloc(sizeof(int) * path->maxflow * data->nbroom);
 	if (!path->hubs)
 		error_malloc();
 	i = 0;
-	while (i < path->nbpath * data->nbroom)
+	while (i < path->maxflow * data->nbroom)
 	{
 		path->hubs[i] = -1;
 		i++;
@@ -41,7 +41,7 @@ void				path_finding(t_data *data)
 	t_path			path;
 
 	init_path(&path, data);
-	ft_printf("nb_paths: %d\n", path.nbpath);
+	ft_printf("maxflow: %d\n", path.maxflow);
 	exit(0);
 	// nb_paths(data, &path);
 	init_hubs(&path, data);

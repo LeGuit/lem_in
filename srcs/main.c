@@ -19,6 +19,7 @@ static void			init_data(t_data *data)
 	data->nbroom = 0;
 	data->com = 0;
 	data->anthill = VECT_INI(t_room);
+	data->input = VECT_INI(char *);
 }
 
 int					main(void)
