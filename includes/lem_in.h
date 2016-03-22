@@ -19,7 +19,7 @@ typedef struct		s_path
 {
 	int				nbpath;
 	int				minpath;
-	int				**hubs;//hun[x][0] = size path
+	int				*hubs;
 }					t_path;
 
 typedef struct		s_room
@@ -66,8 +66,6 @@ void				room_comment(t_data *data, t_room *r);
 void				init_matrix(char *line, t_data *data);
 void				save_hubs(char *line, t_data *data);
 
-void				get_file(char *file, t_data *data);
-
 /*
 ** ERROR
 */
@@ -76,16 +74,12 @@ void				error_open(void);
 void				error_malloc(void);
 void				error_hubs(void);
 
-<<<<<<< HEAD
-
 /*
 ** PATH FINDING
 */
 void				path_finding(t_data *data);
-void				nb_path(t_data *data, t_path *path);
-=======
+// void				nb_path(t_data *data, t_path *path);
 void				get_file(t_data *data);
->>>>>>> origin/master
 
 /*
 ** DEBUG

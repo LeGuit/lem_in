@@ -31,7 +31,6 @@ LIST =	main \
 		error/error_input \
 		error/error_path \
 		find_path/path_finding \
-		find_path/nb_paths \
 		misc/debug_print 
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(addsuffix .c, $(LIST)))

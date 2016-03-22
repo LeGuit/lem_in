@@ -16,8 +16,8 @@
 
 void				print_room(t_room *r)
 {
-	ft_printf("\tname: %s\n\tx: %d\ty: %d\n\tcom: %s\tspec: %d\tid: %d\n",
-		r->name, r->coord[0], r->coord[1], r->com, r->spec, r->id);
+	ft_printf("\tname: %s\n\tx: %d\ty: %d\n\tcom: %s\tid: %d\n",
+		r->name, r->coord[0], r->coord[1], r->com, r->id);
 }
 
 void				print_matrix(t_data *data)
