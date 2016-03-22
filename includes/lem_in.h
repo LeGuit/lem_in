@@ -76,12 +76,16 @@ void				error_open(void);
 void				error_malloc(void);
 void				error_hubs(void);
 
+<<<<<<< HEAD
 
 /*
 ** PATH FINDING
 */
 void				path_finding(t_data *data);
 void				nb_path(t_data *data, t_path *path);
+=======
+void				get_file(t_data *data);
+>>>>>>> origin/master
 
 /*
 ** DEBUG

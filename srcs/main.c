@@ -21,14 +21,12 @@ static void			init_data(t_data *data)
 	data->anthill = VECT_INI(t_room);
 }
 
-int					main(int ac, char **av)
+int					main(void)
 {
 	t_data			data;
 
-	if (ac != 2)
-		error_input();
 	init_data(&data);
-	get_file(av[1], &data);
+	get_file(&data);
 	print_data(&data);
 	// path_finding(&data);
 	return (0);
