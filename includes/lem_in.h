@@ -45,6 +45,14 @@ typedef struct		s_data
 	int				idend;
 }					t_data;
 
+typedef struct		s_bfs
+{
+	int				*capacity;
+	int				*flow;
+	int				*color;
+	int				*pred;
+};
+
 /*
 ** PARSING
 */
