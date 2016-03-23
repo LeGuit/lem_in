@@ -15,6 +15,12 @@
 
 # include "libft.h"
 
+# define WHITE		0
+# define GREY		1
+# define BLACK		2
+# define INT_MAX	2147483647
+
+
 typedef struct		s_path
 {
 	int				maxflow;
@@ -51,7 +57,8 @@ typedef struct		s_bfs
 	int				*flow;
 	int				*color;
 	int				*pred;
-};
+	int				*queue;
+}					t_bfs;
 
 /*
 ** PARSING
@@ -87,8 +94,8 @@ void				error_hubs(void);
 ** PATH FINDING
 */
 void				path_finding(t_data *data);
-// void				nb_path(t_data *data, t_path *path);
 void				get_file(t_data *data);
+int					bfs(int start, int target, t_bfs *bfs, t_data *data);
 
 /*
 ** DEBUG
