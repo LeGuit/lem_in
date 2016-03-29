@@ -51,9 +51,14 @@ static void			init_hubs(t_path *path, t_data *data)
 void				path_finding(t_data *data)
 {
 	t_path			path;
+	t_bfs			bfs;
+	int				flow;
 
 	init_path(&path, data);
 	ft_printf("maxflow: %d\n", path.maxflow);
+	init_bfs(&bfs, data);
+	flow = max_flow(data->idstart, data->idend, &bfs, data);
+	ft_printf("ffaflow: %d\n", flow);
 	exit(0);
 	// nb_paths(data, &path);
 	init_hubs(&path, data);

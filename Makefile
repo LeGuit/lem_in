@@ -31,6 +31,9 @@ LIST =	main \
 		error/error_input \
 		error/error_path \
 		find_path/path_finding \
+		find_path/bfs \
+		find_path/ffa \
+		find_path/init_bfs \
 		misc/debug_print \
 		misc/print
 
