@@ -12,34 +12,24 @@
 
 #include "lem_in.h"
 
-static void			init_colorpred(int *array, int nbroom)
-{
-	array = (int *)malloc(sizeof(int) * nbroom);
-	if (!array)
-		error_malloc();
-}
-
-static void			init_caporflow(int **tab, int nbroom)
+void				init_bfs(t_bfs *bfs, t_data *data)
 {
 	int				it;
 
-	tab = (int **)malloc(sizeof(int *) * nbroom);
-	if (!tab)
+	bfs->capacity = (int **)malloc(sizeof(int *) * data->nbroom);
+	bfs->flow = (int **)malloc(sizeof(int *) * data->nbroom);
+	if (!bfs->capacity || !bfs->flow)
 		error_malloc();
 	it = 0;
-	while (it < nbroom)
+	while (it < data->nbroom)
 	{
-		tab[it] = (int *)malloc(sizeof(int) * nbroom);
-		if (!tab[it])
+		bfs->capacity[it] = (int *)malloc(sizeof(int) * data->nbroom);
+		bfs->flow[it] = (int *)malloc(sizeof(int) * data->nbroom);
+		if (!bfs->capacity[it] || !bfs->flow[it])
 			error_malloc();
 		it++;
 	}
-}
-
-void				init_bfs(t_bfs *bfs, t_data *data)
-{
-	init_caporflow(bfs->capacity, data->nbroom);
-	init_caporflow(bfs->flow, data->nbroom);
-	init_colorpred(bfs->color, data->nbroom);
-	init_colorpred(bfs->pred, data->nbroom);
+	bfs->color = (int *)malloc(sizeof(int) * data->nbroom);
+	bfs->pred = (int *)malloc(sizeof(int) * data->nbroom);
+	bfs->queue = (int *)malloc(sizeof(int) * data->nbroom + 2);
 }

@@ -57,6 +57,7 @@ void				path_finding(t_data *data)
 	init_path(&path, data);
 	ft_printf("maxflow: %d\n", path.maxflow);
 	init_bfs(&bfs, data);
+	ft_printf("yo");
 	flow = max_flow(data->idstart, data->idend, &bfs, data);
 	ft_printf("ffaflow: %d\n", flow);
 	exit(0);

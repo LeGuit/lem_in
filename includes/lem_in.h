@@ -58,6 +58,8 @@ typedef struct		s_bfs
 	int				*color;
 	int				*pred;
 	int				*queue;
+	int				head;
+	int				tail;
 }					t_bfs;
 
 /*
