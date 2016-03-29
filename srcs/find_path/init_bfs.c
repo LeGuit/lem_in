@@ -32,4 +32,6 @@ void				init_bfs(t_bfs *bfs, t_data *data)
 	bfs->color = (int *)malloc(sizeof(int) * data->nbroom);
 	bfs->pred = (int *)malloc(sizeof(int) * data->nbroom);
 	bfs->queue = (int *)malloc(sizeof(int) * data->nbroom + 2);
+	if (!bfs->color || !bfs->pred || !bfs->queue)
+		error_malloc();
 }

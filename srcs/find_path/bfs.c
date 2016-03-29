@@ -14,7 +14,7 @@
 
 static void			enqueue(int x, t_bfs *bfs)
 {
-	ft_printf("%d\t%d\n",x, bfs->tail);
+	ft_printf("%d\t%d\n", x, bfs->tail);
 	bfs->queue[bfs->tail] = x;
 	ft_printf("%d\n", bfs->tail);
 	bfs->tail++;
