@@ -12,10 +12,23 @@
 
 #include "lem_in.h"
 
+static void				set_capacity(int *c, int nb)
+{
+	int					i;
+
+	i = 0;
+	while (i < nb *nb)
+	{
+		c[i] = 1;
+		i++;
+	}
+}
+
 void					init_bfs(t_bfs *b, int nbroom)
 {
 	b->capacity = (int *)malloc(sizeof(int) * nbroom * nbroom);
-	ft_bzero(b->capacity, sizeof(int) * nbroom * nbroom);
+	set_capacity(b->capacity, nbroom);
+	ft_printf("after memset %d\n",b->capacity[0]);
 	b->flow = (int *)malloc(sizeof(int) * nbroom * nbroom);
 	ft_bzero(b->flow, sizeof(int) * nbroom * nbroom);
 	b->color = (int *)malloc(sizeof(int) * nbroom);

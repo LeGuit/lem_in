@@ -63,6 +63,7 @@ int					b_f_s(int start, int target, t_bfs *b, t_data *d)
 		while (j < d->nbroom)
 		{
 			ft_printf("get in ?\n");
+			ft_printf("head: %d, tail: %d\n", b->head, b->tail);
 			if (b->color[j] == WHITE &&
 				(b->capacity[T(i, j, d->nbroom)]
 					- b->flow[T(i, j, d->nbroom)]) > 0)
