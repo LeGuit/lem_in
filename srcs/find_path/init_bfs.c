@@ -12,23 +12,23 @@
 
 #include "lem_in.h"
 
-void					init_bfs(t_bfs *bfs, int nbroom)
+void					init_bfs(t_bfs *b, int nbroom)
 {
-	bfs->capacity = (int *)malloc(sizeof(int) * nbroom * nbroom);
-	ft_bzero(bfs->capacity, nbroom * nbroom);
-	bfs->flow = (int *)malloc(sizeof(int) * nbroom * nbroom);
-	ft_bzero(bfs->flow, nbroom * nbroom * nbroom);
-	bfs->color = (int *)malloc(sizeof(int) * nbroom);
-	ft_bzero(bfs->flow, nbroom * nbroom);
-	bfs->pred = (int *)malloc(sizeof(int) * nbroom);
-	ft_bzero(bfs->flow, nbroom * nbroom);
-	bfs->queue = (int *)malloc(sizeof(int) * (nbroom + 2));
-	ft_bzero(bfs->flow, nbroom * nbroom);
-	if (!bfs->capacity
-		|| !bfs->flow
-		|| !bfs->color
-		|| !bfs->pred
-		|| !bfs->queue)
+	b->capacity = (int *)malloc(sizeof(int) * nbroom * nbroom);
+	ft_bzero(b->capacity, sizeof(int) * nbroom * nbroom);
+	b->flow = (int *)malloc(sizeof(int) * nbroom * nbroom);
+	ft_bzero(b->flow, sizeof(int) * nbroom * nbroom);
+	b->color = (int *)malloc(sizeof(int) * nbroom);
+	ft_bzero(b->color, sizeof(int) * nbroom);
+	b->pred = (int *)malloc(sizeof(int) * nbroom);
+	ft_bzero(b->pred, sizeof(int) * nbroom);
+	b->queue = (int *)malloc(sizeof(int) * (nbroom + 2));
+	ft_bzero(b->queue, sizeof(int) * (nbroom + 2));
+	if (!b->capacity
+		|| !b->flow
+		|| !b->color
+		|| !b->pred
+		|| !b->queue)
 		error_malloc();
-	ft_printf("initbfsqueu: %p\n", bfs->queue);
+	ft_printf("init bqueu: %p\n", b->queue);
 }
