@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwoodwar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/23 13:32:20 by gwoodwar          #+#    #+#             */
-/*   itpdated: 2016/03/23 13:32:28 by gwoodwar         ###   ########.fr       */
+/*   Created: 2016/04/21 16:51:07 by gwoodwar          #+#    #+#             */
+/*   Updated: 2016/04/21 16:51:10 by gwoodwar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int					max_flow(int source, int sink, t_bfs *bfs, t_data *data)
 			it = bfs->pred[it];
 		}
 		it = data->nbroom - 1;
-		while(bfs->pred[it] >= 0)
+		while (bfs->pred[it] >= 0)
 		{
 			bfs->flow[bfs->pred[it]][it] += increment;
 			bfs->flow[it][bfs->pred[it]] -= increment;

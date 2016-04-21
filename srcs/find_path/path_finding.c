@@ -30,7 +30,6 @@ static void			init_path(t_path *path, t_data *data)
 		i++;
 	}
 	path->maxflow = MIN(p_start, p_end);
-
 }
 
 static void			init_hubs(t_path *path, t_data *data)
