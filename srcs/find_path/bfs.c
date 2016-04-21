@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
+#define T(i,j,off)	(i + j *off)
 
 static void			enqueue(int x, t_bfs *bfs)
 {
@@ -63,7 +64,8 @@ int					b_f_s(int start, int target, t_bfs *b, t_data *d)
 		{
 			ft_printf("get in ?\n");
 			if (b->color[j] == WHITE &&
-				(b->capacity[i + j * d->nbroom] - b->flow[i + j * d->nbroom]) > 0)
+				(b->capacity[T(i, j, d->nbroom)]
+					- b->flow[T(i, j, d->nbroom)]) > 0)
 			{
 				enqueue(j, b);
 				b->pred[j] = i;

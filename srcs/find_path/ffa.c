@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
+#define T(i,j,off)	(i + j *off)
 
 int					max_flow(int source, int sink, t_bfs *b, t_data *d)
 {
@@ -26,15 +27,16 @@ int					max_flow(int source, int sink, t_bfs *b, t_data *d)
 		i = d->nbroom - 1;
 		while (b->pred[i] >= 0)
 		{
-			increment = MIN(increment, b->capacity[b->pred[i] + i * d->nbroom]
-				- b->flow[b->pred[i] + i * d->nbroom]);
+			increment = MIN(increment, b->capacity[T(b->pred[i], i, d->nbroom)]
+				- b->flow[T(b->pred[i], i, d->nbroom)]);
 			i = b->pred[i];
+			ft_printf("increment: %d\n", increment);
 		}
 		i = d->nbroom - 1;
 		while (b->pred[i] >= 0)
 		{
-			b->flow[b->pred[i] + i * d->nbroom] += increment;
-			b->flow[i + b->pred[i] * d->nbroom] -= increment;
+			b->flow[T(b->pred[i], i, d->nbroom)] += increment;
+			b->flow[T(i, b->pred[i], d->nbroom)] -= increment;
 		}
 		max_flow += increment;
 	}
