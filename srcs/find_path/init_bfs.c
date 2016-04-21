@@ -12,26 +12,23 @@
 
 #include "lem_in.h"
 
-void				init_bfs(t_bfs *bfs, t_data *data)
+void					init_bfs(t_bfs *bfs, int nbroom)
 {
-	int				it;
-
-	bfs->capacity = (int **)malloc(sizeof(int *) * data->nbroom);
-	bfs->flow = (int **)malloc(sizeof(int *) * data->nbroom);
-	if (!bfs->capacity || !bfs->flow)
+	bfs->capacity = (int *)malloc(sizeof(int) * nbroom * nbroom);
+	ft_bzero(bfs->capacity, nbroom * nbroom);
+	bfs->flow = (int *)malloc(sizeof(int) * nbroom * nbroom);
+	ft_bzero(bfs->flow, nbroom * nbroom * nbroom);
+	bfs->color = (int *)malloc(sizeof(int) * nbroom);
+	ft_bzero(bfs->flow, nbroom * nbroom);
+	bfs->pred = (int *)malloc(sizeof(int) * nbroom);
+	ft_bzero(bfs->flow, nbroom * nbroom);
+	bfs->queue = (int *)malloc(sizeof(int) * (nbroom + 2));
+	ft_bzero(bfs->flow, nbroom * nbroom);
+	if (!bfs->capacity
+		|| !bfs->flow
+		|| !bfs->color
+		|| !bfs->pred
+		|| !bfs->queue)
 		error_malloc();
-	it = 0;
-	while (it < data->nbroom)
-	{
-		bfs->capacity[it] = (int *)malloc(sizeof(int) * data->nbroom);
-		bfs->flow[it] = (int *)malloc(sizeof(int) * data->nbroom);
-		if (!bfs->capacity[it] || !bfs->flow[it])
-			error_malloc();
-		it++;
-	}
-	bfs->color = (int *)malloc(sizeof(int) * data->nbroom);
-	bfs->pred = (int *)malloc(sizeof(int) * data->nbroom);
-	bfs->queue = (int *)malloc(sizeof(int) * data->nbroom + 2);
-	if (!bfs->color || !bfs->pred || !bfs->queue)
-		error_malloc();
+	ft_printf("initbfsqueu: %p\n", bfs->queue);
 }

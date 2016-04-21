@@ -52,8 +52,8 @@ typedef struct		s_data
 
 typedef struct		s_bfs
 {
-	int				**capacity;
-	int				**flow;
+	int				*capacity;
+	int				*flow;
 	int				*color;
 	int				*pred;
 	int				*queue;
@@ -97,7 +97,7 @@ void				error_hubs(void);
 void				path_finding(t_data *data);
 void				get_file(t_data *data);
 int					b_f_s(int start, int target, t_bfs *bfs, t_data *data);
-void				init_bfs(t_bfs *bfs, t_data *data);
+void				init_bfs(t_bfs *bfs, int nbroom);
 int					max_flow(int source, int sink, t_bfs *bfs, t_data *data);
 
 /*

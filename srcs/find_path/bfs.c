@@ -14,9 +14,8 @@
 
 static void			enqueue(int x, t_bfs *bfs)
 {
-	ft_printf("%d\t%d\n", x, bfs->tail);
+	ft_printf("enqueue\n");
 	bfs->queue[bfs->tail] = x;
-	ft_printf("%d\n", bfs->tail);
 	bfs->tail++;
 	bfs->color[x] = GREY;
 }
@@ -25,36 +24,52 @@ static int			dequeue(t_bfs *bfs)
 {
 	int				x;
 
+	ft_printf("dequeue\n");
 	x = bfs->queue[bfs->head];
 	bfs->head++;
 	bfs->color[x] = BLACK;
 	return (x);
 }
 
-int					b_f_s(int start, int target, t_bfs *bfs, t_data *data)
+static void			init_color(int *c, int nbroom)
 {
 	int				it;
-	int				k;
 
-	bfs->head = 0;
-	bfs->tail = 0;
 	it = 0;
-	ft_printf("YO %d\n", data->nbroom);
-	ft_bzero(&bfs->color, data->nbroom * sizeof(int));
-	enqueue(start, bfs);
-	bfs->pred[start] = -1;
-	while (bfs->head != bfs->tail)
+	while (it < nbroom)
 	{
-		k = dequeue(bfs);
-		while (it < data->nbroom)
+		c[it] = WHITE;
+		it++;
+	}
+}
+
+int					b_f_s(int start, int target, t_bfs *b, t_data *d)
+{
+	int				i;
+	int				j;
+
+	b->head = 0;
+	b->tail = 0;
+	j = 0;
+	init_color(b->color, d->nbroom);
+	enqueue(start, b);
+	ft_printf("FIRST ENQUEUE PASS\n");
+	b->pred[start] = -1;
+	while (b->head != b->tail)
+	{
+		ft_printf("head: %d, tail: %d\n", b->head, b->tail);
+		i = dequeue(b);
+		while (j < d->nbroom)
 		{
-			if (bfs->color[it] == WHITE && (bfs->capacity)[k][it] > 0)
+			ft_printf("get in ?\n");
+			if (b->color[j] == WHITE &&
+				(b->capacity[i + j * d->nbroom] - b->flow[i + j * d->nbroom]) > 0)
 			{
-				enqueue(it, bfs);
-				bfs->pred[it] = k;
+				enqueue(j, b);
+				b->pred[j] = i;
 			}
-			it++;
+			j++;
 		}
 	}
-	return (bfs->color[target] == BLACK);
+	return (b->color[target] == BLACK);
 }
