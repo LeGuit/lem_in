@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#define T(i,j,off)	(i + j *off)
+#define T(i,j,off)	((j) + (i * off))
 
 static void			enqueue(int x, t_bfs *bfs)
 {
@@ -51,7 +51,6 @@ int					b_f_s(int start, int target, t_bfs *b, t_data *d)
 
 	b->head = 0;
 	b->tail = 0;
-	j = 0;
 	init_color(b->color, d->nbroom);
 	enqueue(start, b);
 	ft_printf("FIRST ENQUEUE PASS\n");
@@ -59,12 +58,12 @@ int					b_f_s(int start, int target, t_bfs *b, t_data *d)
 	while (b->head != b->tail)
 	{
 		i = dequeue(b);
+		j = 0;
 		while (j < d->nbroom)
 		{
-			// ft_printf("head: %d, tail: %d\n", b->head, b->tail);
-			if (b->color[j] == WHITE &&
-				(b->capacity[T(i, j, d->nbroom)]
-					- b->flow[T(i, j, d->nbroom)]) > 0)
+			ft_printf("cap: %d, flow: %d\n", b->capacity[T(i, j, d->nbroom)], b->flow[T(i, j, d->nbroom)]);
+			if (b->color[j] == WHITE
+				&& (b->capacity[T(i, j, d->nbroom)] - b->flow[T(i, j, d->nbroom)]) > 0)
 			{
 				enqueue(j, b);
 				b->pred[j] = i;
@@ -72,5 +71,19 @@ int					b_f_s(int start, int target, t_bfs *b, t_data *d)
 			j++;
 		}
 	}
+	i = 0;
+	while (i < d->nbroom)
+		{
+			ft_printf("pred[%d]: %d\n", i, b->pred[i]);
+			i++;
+		}
+	i = target;
+	while (i != start)
+	{
+		ft_printf("%d <- ", i);
+		i = b->pred[i];
+	}
+	ft_printf("%d\n", start);
+	// exit (0);
 	return (b->color[target] == BLACK);
 }

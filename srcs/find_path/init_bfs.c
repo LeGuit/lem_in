@@ -17,7 +17,7 @@ static void				set_capacity(int *c, int nb)
 	int					i;
 
 	i = 0;
-	while (i < nb *nb)
+	while (i < nb * nb)
 	{
 		c[i] = 1;
 		i++;

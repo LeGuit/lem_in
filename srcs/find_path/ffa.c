@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#define T(i,j,off)	(i + j * off)
+#define T(i,j,off)	(j + i * off)
 
 int					max_flow(int source, int sink, t_bfs *b, t_data *d)
 {
