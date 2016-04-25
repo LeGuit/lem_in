@@ -14,24 +14,24 @@
 
 void				error_input(void)
 {
-	ft_putendl_fd("lem_in: wrong input", 2);
-	ft_putendl_fd("usage: ./lem_in [file]", 2);
+	ft_putendl_fd("lem-in: wrong input", 2);
+	ft_putendl_fd("usage: ./lem-in [file]", 2);
 	exit(0);
 }
 
 void				error_open(void)
 {
-	ft_putendl_fd("lem_in: fail to open file", 2);
+	ft_putendl_fd("lem-in: fail to open file", 2);
 	exit(0);
 }
 
 void				error_malloc(void)
 {
-	ft_putendl_fd("lem_in: malloc error", 2);
+	ft_putendl_fd("lem-in: malloc error", 2);
 	exit(0);
 }
 
 void				error_hubs(void)
 {
-	ft_putendl_fd("lem_in: wrong hub name", 2);
+	ft_putendl_fd("lem-in: wrong hub name", 2);
 }
