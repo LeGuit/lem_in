@@ -79,11 +79,12 @@ void				print_bfs(int start, int target, t_bfs *b)
 {
 	int				i;
 
+	ft_printf("start: %d\t end: %d\n", start / 2, target / 2);
 	i = target;
 	while (i != start)
 	{
 		ft_printf("%d <- ", i / 2);
 		i = b->pred[i];
 	}
-	ft_printf("%d\n", start);
+	ft_printf("%d\n", start / 2);
 }

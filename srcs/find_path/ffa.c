@@ -12,32 +12,25 @@
 
 #include "lem_in.h"
 
-int					max_flow(int source, int sink, t_bfs *b, t_data *d)
+int					max_flow(int source, int sink, t_bfs *b)
 {
-	int				increment;
 	int				i;
 	int				max_flow;
 
 	max_flow = 0;
-	while (b_f_s(R_IN(source), R_IN(sink), b))
+	while (b_f_s(source, sink, b))
 	{
-		increment = INT_MAX;
-		i = d->nbroom - 1;
-		while (b->pred[i] >= 0)
+		i = sink;
+		while (i != source)
 		{
-			increment = MIN(increment, b->capacity[T(b->pred[i], i, d->nbroom)]
-				- b->flow[T(b->pred[i], i, d->nbroom)]);
-			i = b->pred[i];
-			ft_printf("increment: %d\n", increment);
-		}
-		i = d->nbroom - 1;
-		while (b->pred[i] >= 0)
-		{
-			b->flow[T(b->pred[i], i, d->nbroom)] += increment;
-			b->flow[T(i, b->pred[i], d->nbroom)] -= increment;
+			b->flow[T(b->pred[i], i, b->size)] += 1;
+			b->flow[T(i, b->pred[i], b->size)] -= 1;
 			i = b->pred[i];
 		}
-		max_flow += increment;
+		max_flow += 1;
+		print_matrix(b->capacity, b->size);
+		ft_putchar('\n');
+		print_matrix(b->flow, b->size);
 	}
 	return (max_flow);
 }

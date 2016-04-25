@@ -68,6 +68,7 @@ int					b_f_s(int start, int target, t_bfs *b)
 			j++;
 		}
 	}
-	print_bfs(start, target, b);
+	if (b->color[target] == BLACK)
+		print_bfs(start, target, b);
 	return (b->color[target] == BLACK);
 }

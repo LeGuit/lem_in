@@ -101,7 +101,7 @@ void				path_finding(t_data *data);
 void				get_file(t_data *data);
 int					b_f_s(int start, int target, t_bfs *bfs);
 void				init_bfs(t_bfs *bfs, t_data *d);
-int					max_flow(int source, int sink, t_bfs *bfs, t_data *data);
+int					max_flow(int source, int sink, t_bfs *bfs);
 
 /*
 ** DEBUG
