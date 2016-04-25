@@ -25,8 +25,9 @@ void					init_bfs(t_bfs *b, t_data *d)
 		error_malloc();
 	ft_memcpy(b->capacity, d->matrix, size * size * sizeof(int));
 	ft_bzero(b->flow, sizeof(int) * size * size);
-	ft_bzero(b->color, sizeof(int) * size * size);
+	ft_bzero(b->color, sizeof(int) * size);
 	ft_bzero(b->pred, sizeof(int) * size);
 	ft_bzero(b->queue, sizeof(int) * size + 2);
 	b->size = size;
+
 }

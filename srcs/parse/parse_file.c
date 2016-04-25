@@ -69,6 +69,6 @@ void				get_file(t_data *data)
 			break ;
 		line = 0;
 	}
-	if (ret == 0)
+	if (ret == 0)//&& check valid input
 		ft_vect_print(&data->input, print_input);
 }
