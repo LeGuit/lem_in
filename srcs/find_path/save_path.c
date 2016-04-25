@@ -44,12 +44,6 @@ static void			copy_path(t_onepath *p, int *pred, int start, int end)
 		j = pred[pred[j]];
 		i--;
 	}
-	while (i < p->size - 1)
-	{
-		ft_printf("%d -> ", p->path[i]);
-		i++;
-	}
-	ft_printf("%d\n", p->path[p->size - 1]);
 }
 
 void				save_path(int start, int end, int *pred, t_allpaths *ap)
@@ -60,4 +54,5 @@ void				save_path(int start, int end, int *pred, t_allpaths *ap)
 	onepath.size = size_path(start, end, pred);
 	onepath.path = MALLOC(int, onepath.size);
 	copy_path(&onepath, pred, start, end);
+	ft_vect_push_back(&ap->paths, &onepath);
 }

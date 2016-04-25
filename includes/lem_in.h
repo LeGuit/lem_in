@@ -119,5 +119,6 @@ void				print_room(t_room *r);
 void				print_matrix(int *tab, int size);
 void				print_anthill(t_data *d);
 void				print_bfs(int target, int start, t_bfs *b);
+void				print_path(t_onepath *p);
 
 #endif
