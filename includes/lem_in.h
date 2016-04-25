@@ -22,12 +22,18 @@
 # define R_IN(i)	(2 * (i))
 # define R_OUT(i)	(2 * (i) + 1)
 
-typedef struct		s_path
+typedef struct		s_onepath
+{
+	int				*path;
+	int				size;
+}					t_onepath;
+
+typedef struct		s_allpaths
 {
 	int				maxflow;
 	int				minpath;
-	int				*hubs;
-}					t_path;
+	t_vect			paths;
+}					t_allpaths;
 
 typedef struct		s_room
 {
@@ -101,7 +107,8 @@ void				path_finding(t_data *data);
 void				get_file(t_data *data);
 int					b_f_s(int start, int target, t_bfs *bfs);
 void				init_bfs(t_bfs *bfs, t_data *d);
-int					max_flow(int source, int sink, t_bfs *bfs);
+int					max_flow(int source, int sink, t_bfs *bfs, t_allpaths *ap);
+void				save_path(int start, int end, int *pred, t_allpaths *ap);
 
 /*
 ** DEBUG

@@ -34,6 +34,7 @@ LIST =	main \
 		find_path/bfs \
 		find_path/ffa \
 		find_path/init_bfs \
+		find_path/save_path \
 		misc/debug_print \
 		misc/print
 

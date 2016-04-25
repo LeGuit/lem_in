@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-int					max_flow(int source, int sink, t_bfs *b)
+int					max_flow(int source, int sink, t_bfs *b, t_allpaths *ap)
 {
 	int				i;
 	int				max_flow;
@@ -28,9 +28,10 @@ int					max_flow(int source, int sink, t_bfs *b)
 			i = b->pred[i];
 		}
 		max_flow += 1;
-		print_matrix(b->capacity, b->size);
-		ft_putchar('\n');
-		print_matrix(b->flow, b->size);
+		// print_matrix(b->capacity, b->size);
+		// ft_putchar('\n');
+		// print_matrix(b->flow, b->size);
+		save_path(source, sink, b->pred, ap);
 	}
 	return (max_flow);
 }
