@@ -30,5 +30,7 @@ int					main(void)
 	get_file(&data);
 	// print_data(&data);
 	path_finding(&data);
+	while(1)
+		;
 	return (0);
 }

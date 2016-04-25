@@ -31,3 +31,12 @@ void					init_bfs(t_bfs *b, t_data *d)
 	b->size = size;
 
 }
+
+void					free_bfs(t_bfs *b)
+{
+	free(b->capacity);
+	free(b->flow);
+	free(b->color);
+	free(b->pred);
+	free(b->queue);
+}

@@ -22,10 +22,8 @@ void				path_finding(t_data *d)
 	// ft_printf("\n---- START MAXFLOW ----\n");
 	allpaths.maxflow = max_flow(R_OUT(d->idstart), R_IN(d->idend), &bfs,
 								&allpaths);
+	free_bfs(&bfs);
 	ft_printf("\n---- PRINT PATH FETCHED ----\n");
 	ft_vect_print(&allpaths.paths, print_path);
 	ft_printf("ffaflow: %d\n", allpaths.maxflow);
-	exit(0);
-	// nb_paths(d, &path);
-	// init_hubs(&path, d);
 }
