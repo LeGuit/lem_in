@@ -20,21 +20,21 @@ void				print_room(t_room *r)
 		r->name, r->coord[0], r->coord[1], r->com, r->id);
 }
 
-void				print_matrix(t_data *data)
+void				print_anthill(t_data *d)
 {
 	int				i;
 	int				j;
 	t_room			*r;
 
 	i = 0;
-	while (i < data->nbroom)
+	while (i < d->nbroom)
 	{
-		r = CAST(t_room *, ft_vect_at(&data->anthill, i));
+		r = CAST(t_room *, ft_vect_at(&d->anthill, i));
 		ft_printf("%s\t", r->name);
 		j = 0;
-		while (j < data->nbroom)
+		while (j < d->nbroom)
 		{
-			if (!data->matrix[i][j])
+			if (!d->matrix[T(R_OUT(i), R_IN(j), d->nbroom * 2)])
 				ft_printf(". ");
 			else
 				ft_printf("X ");
@@ -45,12 +45,45 @@ void				print_matrix(t_data *data)
 	}
 }
 
-void				print_data(t_data *data)
+void				print_matrix(int *tab, int size)
+{
+	int				i;
+	int				j;
+
+	i = 0;
+	while (i < size)
+	{
+		ft_printf("%s\t", i % 2 ? "OUT\t" : "IN\t");
+		j = 0;
+		while (j < size)
+		{
+			ft_printf("%d ", tab[T(i, j, size)]);
+			j++;
+		}
+		ft_printf("\n");
+		i++;
+	}
+}
+
+void				print_data(t_data *d)
 {
 	ft_printf("\nants: %d\tnbrooms: %d\tnbpath: %d\n",
-		data->nbants, data->nbroom, data->nbpath);
+		d->nbants, d->nbroom, d->nbpath);
 	ft_printf("ROOMS:\n");
-	ft_vect_print(&data->anthill, print_room);
+	ft_vect_print(&d->anthill, print_room);
 	ft_printf("MATRIX:\n");
-	print_matrix(data);
+	print_anthill(d);
+}
+
+void				print_bfs(int start, int target, t_bfs *b)
+{
+	int				i;
+
+	i = target;
+	while (i != start)
+	{
+		ft_printf("%d <- ", i / 2);
+		i = b->pred[i];
+	}
+	ft_printf("%d\n", start);
 }

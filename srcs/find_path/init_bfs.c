@@ -12,36 +12,22 @@
 
 #include "lem_in.h"
 
-static void				set_capacity(int *c, int nb)
+void					init_bfs(t_bfs *b, t_data *d)
 {
-	int					i;
+	int					size;
 
-	i = 0;
-	while (i < nb * nb)
-	{
-		c[i] = 1;
-		i++;
-	}
-}
-
-void					init_bfs(t_bfs *b, int nbroom)
-{
-	b->capacity = (int *)malloc(sizeof(int) * nbroom * nbroom);
-	set_capacity(b->capacity, nbroom);
-	ft_printf("after memset %d\n",b->capacity[0]);
-	b->flow = (int *)malloc(sizeof(int) * nbroom * nbroom);
-	ft_bzero(b->flow, sizeof(int) * nbroom * nbroom);
-	b->color = (int *)malloc(sizeof(int) * nbroom);
-	ft_bzero(b->color, sizeof(int) * nbroom);
-	b->pred = (int *)malloc(sizeof(int) * nbroom);
-	ft_bzero(b->pred, sizeof(int) * nbroom);
-	b->queue = (int *)malloc(sizeof(int) * (nbroom + 2));
-	ft_bzero(b->queue, sizeof(int) * (nbroom + 2));
-	if (!b->capacity
-		|| !b->flow
-		|| !b->color
-		|| !b->pred
-		|| !b->queue)
+	size = d->nbroom * 2;
+	if (!(b->capacity = MALLOC(int, size * size))
+		|| !(b->flow = MALLOC(int, size * size))
+		|| !(b->color = MALLOC(int, size))
+		|| !(b->pred = MALLOC(int, size))
+		|| !(b->queue = MALLOC(int, size + 2)))
 		error_malloc();
-	ft_printf("init bqueu: %p\n", b->queue);
+	ft_memcpy(b->capacity, d->matrix, size * size * sizeof(int));
+	print_matrix(b->capacity, size);
+	ft_bzero(b->flow, sizeof(int) * size * size);
+	ft_bzero(b->color, sizeof(int) * size * size);
+	ft_bzero(b->pred, sizeof(int) * size);
+	ft_bzero(b->queue, sizeof(int) * size + 2);
+	b->size = size;
 }

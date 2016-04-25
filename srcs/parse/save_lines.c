@@ -56,45 +56,46 @@ void				save_rooms(char *line, t_data *data)
 	ft_vect_push_back(&data->anthill, &r);
 }
 
-void				init_matrix(char *line, t_data *data)
+void				init_matrix(char *line, t_data *d)
 {
 	int				i;
 
-	data->matrix = (int **)malloc(data->nbroom * sizeof(int *));
+	d->matrix = MALLOC(int, (d->nbroom * d->nbroom) * 4);
+	ft_bzero(d->matrix, (d->nbroom * d->nbroom * 4) * sizeof(int));
+	d->state++;
 	i = 0;
-	while (i < data->nbroom)
+	while (i < d->nbroom)
 	{
-		data->matrix[i] = (int *)malloc(data->nbroom * sizeof(int));
-		ft_bzero(data->matrix[i], data->nbroom/**sizeof(int)*/);
+		d->matrix[T(R_IN(i), R_OUT(i), d->nbroom * 2)] = 1;
 		i++;
 	}
-	data->state++;
-	save_hubs(line, data);
+	save_hubs(line, d);
 }
 
-void				save_hubs(char *line, t_data *data)
+void				save_hubs(char *line, t_data *d)
 {
-	int				x;
-	int				y;
-	size_t			i;
+	int				i;
+	int				j;
+	size_t			size;
 	char			*cursor;
 	t_room			*r;
 
-	x = -1;
-	y = -1;
+	i = -1;
+	j = -1;
 	cursor = ft_strchr(line, '-');
-	i = 0;
-	while (i < data->anthill.size)
+	size = 0;
+	while (size < d->anthill.size)
 	{
-		r = CAST(t_room *, ft_vect_at(&data->anthill, i));
+		r = CAST(t_room *, ft_vect_at(&d->anthill, size));
 		if (!ft_strncmp(r->name, line, cursor - line))
-			x = r->id;
+			i = r->id;
 		if (!ft_strcmp(r->name, cursor + 1))
-			y = r->id;
-		i++;
+			j = r->id;
+		size++;
 	}
-	if (x == -1 || y == -1)
+	if (i == -1 || j == -1)
 		error_hubs();
-	data->matrix[x][y] = 1;
-	data->matrix[y][x] = 1;
+	d->matrix[T(R_OUT(i), R_IN(j), d->nbroom * 2)] = 1;
+	d->matrix[T(R_OUT(j), R_IN(i), d->nbroom * 2)] = 1;
+	
 }

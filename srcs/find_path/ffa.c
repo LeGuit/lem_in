@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#define T(i,j,off)	(j + i * off)
 
 int					max_flow(int source, int sink, t_bfs *b, t_data *d)
 {
@@ -20,7 +19,7 @@ int					max_flow(int source, int sink, t_bfs *b, t_data *d)
 	int				max_flow;
 
 	max_flow = 0;
-	while (b_f_s(source, sink, b, d))
+	while (b_f_s(R_IN(source), R_IN(sink), b))
 	{
 		increment = INT_MAX;
 		i = d->nbroom - 1;
