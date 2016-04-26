@@ -31,6 +31,23 @@ static t_get_fct const		g_get_info[] =
 	[4] = &save_hubs
 };
 
+static int			check_input(t_data *d)
+{
+	if (d->nbroom == 0)
+		ft_putendl_fd("ERROR: lem-in: No room in the map !", 2);
+	else if (d->nbpath == 0)
+		ft_putendl_fd("ERROR: lem-in: No path in the map !", 2);
+	else if (d->nbants == 0)
+		ft_putendl_fd("ERROR: lem-in: No ants in the map !", 2);
+	else if (d->idstart == -1)
+		ft_putendl_fd("ERROR: lem-in: No start in the map !", 2);
+	else if (d->idend == -1)
+		ft_putendl_fd("ERROR: lem-in: No end in the map !", 2);
+	else
+		return (0);
+	return (1);
+}
+
 static int			check_func(char *line, t_data *data)
 {
 	int				ret;
@@ -67,8 +84,8 @@ void				get_file(t_data *data)
 			g_get_info[0](line, data);
 		else if (check_func(line, data))
 			break ;
-		line = 0;
+		free(line);
 	}
-	if (ret == 0)//&& check valid input
-		ft_vect_print(&data->input, print_input);
+	if (check_input(data) || ret != 0)
+		exit(0);
 }

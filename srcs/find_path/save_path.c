@@ -25,7 +25,6 @@ static int			size_path(int start, int end, int *pred)
 		size++;
 	}
 	size++;
-	ft_printf("size path: %d\n", (size + 2) / 2);
 	return ((size + 2) / 2);
 }
 

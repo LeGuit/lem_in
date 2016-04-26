@@ -29,7 +29,6 @@ void					init_bfs(t_bfs *b, t_data *d)
 	ft_bzero(b->pred, sizeof(int) * size);
 	ft_bzero(b->queue, sizeof(int) * size + 2);
 	b->size = size;
-
 }
 
 void					free_bfs(t_bfs *b)

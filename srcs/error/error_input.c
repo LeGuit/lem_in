@@ -15,7 +15,7 @@
 void				error_input(void)
 {
 	ft_putendl_fd("lem-in: wrong input", 2);
-	ft_putendl_fd("usage: ./lem-in [file]", 2);
+	ft_putendl_fd("usage: ./lem-in < [file]", 2);
 	exit(0);
 }
 

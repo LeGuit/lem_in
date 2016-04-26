@@ -84,6 +84,7 @@ void				save_hubs(char *line, t_data *d)
 	j = -1;
 	cursor = ft_strchr(line, '-');
 	size = 0;
+	d->nbpath++;
 	while (size < d->anthill.size)
 	{
 		r = CAST(t_room *, ft_vect_at(&d->anthill, size));
@@ -97,5 +98,4 @@ void				save_hubs(char *line, t_data *d)
 		error_hubs();
 	d->matrix[T(R_OUT(i), R_IN(j), d->nbroom * 2)] = 1;
 	d->matrix[T(R_OUT(j), R_IN(i), d->nbroom * 2)] = 1;
-	
 }

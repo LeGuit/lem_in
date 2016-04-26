@@ -40,15 +40,19 @@ void				path_finding(t_data *d)
 	allpaths.idmin = 0;
 	allpaths.sizemin = d->nbroom;
 	init_bfs(&bfs, d);
-	// ft_printf("\n---- START MAXFLOW ----\n");
 	allpaths.maxflow = max_flow(R_OUT(d->idstart), R_IN(d->idend), &bfs,
 								&allpaths);
 	free_bfs(&bfs);
-	ft_printf("\n---- PRINT PATH FETCHED ----\n");
-	ft_vect_print(&allpaths.paths, print_path);
-	ft_printf("ffaflow: %d\n", allpaths.maxflow);
+	if (allpaths.maxflow == 0)
+	{
+		ft_putendl_fd("ERROR: lem-in: No path from start to end", 2);
+		return ;
+	}
+	// ft_printf("\n---- PRINT PATH FETCHED ----\n");
+	// ft_vect_print(&allpaths.paths, print_path);
+	// ft_printf("ffaflow: %d\n", allpaths.maxflow);
 	get_min_path(&allpaths);
-	ft_printf("\n---- PRINT ID PATH FOUND ----\n");
-	ft_printf("sizemin: %d\tidmin: %d\n", allpaths.sizemin, allpaths.idmin);
-	// ants_invasion(&allpaths, d);
+	// ft_printf("\n---- PRINT ID PATH FOUND ----\n");
+	// ft_printf("sizemin: %d\tidmin: %d\n", allpaths.sizemin, allpaths.idmin);
+	ants_invasion(&allpaths, d);
 }

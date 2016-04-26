@@ -36,7 +36,8 @@ LIST =	main \
 		find_path/init_bfs \
 		find_path/save_path \
 		misc/debug_print \
-		misc/print
+		misc/print \
+		ants_management/ant_start
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(addsuffix .c, $(LIST)))
 OBJS := $(addprefix $(OBJS_DIR)/, $(addsuffix .o, $(LIST)))

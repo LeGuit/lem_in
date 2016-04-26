@@ -18,6 +18,8 @@ static void			init_data(t_data *data)
 	data->nbpath = 0;
 	data->nbroom = 0;
 	data->com = 0;
+	data->idstart = -1;
+	data->idend = -1;
 	data->anthill = VECT_INI(t_room);
 	data->input = VECT_INI(char *);
 }
@@ -28,7 +30,9 @@ int					main(void)
 
 	init_data(&data);
 	get_file(&data);
-	print_data(&data);
+	// print_data(&data);
+	ft_vect_print(&data.input, print_input);
+	ft_printf("\n");
 	path_finding(&data);
 	return (0);
 }

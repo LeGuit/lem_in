@@ -56,8 +56,8 @@ int					b_f_s(int start, int target, t_bfs *b)
 	while (b->head != b->tail)
 	{
 		i = dequeue(b);
-		j = 0;
-		while (j < size)
+		j = -1;
+		while (++j < size)
 		{
 			if (b->color[j] == WHITE
 				&& (b->capacity[T(i, j, size)] - b->flow[T(i, j, size)]) > 0)
@@ -65,10 +65,7 @@ int					b_f_s(int start, int target, t_bfs *b)
 				enqueue(j, b);
 				b->pred[j] = i;
 			}
-			j++;
 		}
 	}
-	// if (b->color[target] == BLACK)
-	// 	print_bfs(start, target, b);
 	return (b->color[target] == BLACK);
 }
