@@ -49,7 +49,6 @@ void				save_path(int start, int end, int *pred, t_allpaths *ap)
 {
 	t_onepath		onepath;
 
-	(void)ap;
 	onepath.size = size_path(start, end, pred);
 	onepath.path = MALLOC(int, onepath.size);
 	copy_path(&onepath, pred, start, end);

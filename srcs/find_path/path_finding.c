@@ -13,24 +13,6 @@
 #include "lem_in.h"
 #define CAST(type, ptr)				((type)(ptr))
 
-static void			get_min_path(t_allpaths *p)
-{
-	size_t			i;
-	t_onepath		*path;
-
-	i = 0;
-	while (i < p->paths.size)
-	{
-		path = CAST(t_onepath *, ft_vect_at(&p->paths, i));
-		if (path->size < p->sizemin)
-		{
-			p->sizemin = path->size;
-			p->idmin = i;
-		}
-		i++;
-	}
-}
-
 void				path_finding(t_data *d)
 {
 	t_allpaths		allpaths;
@@ -48,11 +30,8 @@ void				path_finding(t_data *d)
 		ft_putendl_fd("ERROR: lem-in: No path from start to end", 2);
 		return ;
 	}
-	// ft_printf("\n---- PRINT PATH FETCHED ----\n");
-	// ft_vect_print(&allpaths.paths, print_path);
-	// ft_printf("ffaflow: %d\n", allpaths.maxflow);
-	get_min_path(&allpaths);
-	// ft_printf("\n---- PRINT ID PATH FOUND ----\n");
-	// ft_printf("sizemin: %d\tidmin: %d\n", allpaths.sizemin, allpaths.idmin);
+	ft_printf("\n---- PRINT PATH FETCHED ----\n");
+	ft_vect_print(&allpaths.paths, print_path);
+	ft_printf("ffaflow: %d\n", allpaths.maxflow);
 	ants_invasion(&allpaths, d);
 }

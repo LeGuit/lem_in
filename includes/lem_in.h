@@ -28,6 +28,14 @@ typedef struct		s_onepath
 	int				size;
 }					t_onepath;
 
+typedef struct		s_ant
+{
+	t_onepath		*path;
+	int				antid;
+	int				move;
+	int				status;
+}					t_ant;
+
 typedef struct		s_allpaths
 {
 	int				maxflow;
@@ -116,6 +124,7 @@ void				save_path(int start, int end, int *pred, t_allpaths *ap);
 ** ANTS INVASION
 */
 void				ants_invasion(t_allpaths *p, t_data *d);
+void				print_ant(t_ant *a, t_data *d);
 /*
 ** DEBUG
 */
@@ -126,5 +135,6 @@ void				print_matrix(int *tab, int size);
 void				print_anthill(t_data *d);
 void				print_bfs(int target, int start, t_bfs *b);
 void				print_path(t_onepath *p);
+void				print_ants_array(t_ant *ants_array, int size);
 
 #endif

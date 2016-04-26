@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
+#define CAST(type, ptr)				((type)(ptr))
 
 void				print_input(char **v)
 {
@@ -29,4 +30,26 @@ void				print_path(t_onepath *p)
 		i++;
 	}
 	ft_printf("%d\n", p->path[p->size - 1]);
+}
+
+void				print_ants_array(t_ant *ants_array, int size)
+{
+	int				i;
+
+	i = 0;
+	while (i < size)
+	{
+		ft_printf("antid: %d\n", ants_array[i].antid);
+		print_path(ants_array[i].path);
+		i++;
+	}
+}
+
+void				print_ant(t_ant *a, t_data *d)
+{
+	t_room			*r;
+
+	a->move++;
+	r = CAST(t_room *, ft_vect_at(&d->anthill, a->path->path[a->move]));
+	ft_printf("L%d-%s ", a->antid, r->name);
 }
