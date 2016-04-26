@@ -22,10 +22,10 @@ static void			get_min_path(t_allpaths *p)
 	while (i < p->paths.size)
 	{
 		path = CAST(t_onepath *, ft_vect_at(&p->paths, i));
-		if (path->size < p->minpath.size)
+		if (path->size < p->sizemin)
 		{
-			p->minpath.size = path->size;
-			ft_memcpy(p->minpath.path, path->path, path->size * sizeof(int));
+			p->sizemin = path->size;
+			p->idmin = i;
 		}
 		i++;
 	}
@@ -37,7 +37,8 @@ void				path_finding(t_data *d)
 	t_bfs			bfs;
 
 	allpaths.paths = VECT_INI(t_onepath);
-	allpaths.minpath.size = d->nbroom;
+	allpaths.idmin = 0;
+	allpaths.sizemin = d->nbroom;
 	init_bfs(&bfs, d);
 	// ft_printf("\n---- START MAXFLOW ----\n");
 	allpaths.maxflow = max_flow(R_OUT(d->idstart), R_IN(d->idend), &bfs,
@@ -47,7 +48,7 @@ void				path_finding(t_data *d)
 	ft_vect_print(&allpaths.paths, print_path);
 	ft_printf("ffaflow: %d\n", allpaths.maxflow);
 	get_min_path(&allpaths);
-	ft_printf("\n---- PRINT MIN PATH FOUND ----\n");
-	print_path(&allpaths.minpath);
+	ft_printf("\n---- PRINT ID PATH FOUND ----\n");
+	ft_printf("sizemin: %d\tidmin: %d\n", allpaths.sizemin, allpaths.idmin);
 	// ants_invasion(&allpaths, d);
 }

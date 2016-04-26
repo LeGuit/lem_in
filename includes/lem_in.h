@@ -31,7 +31,8 @@ typedef struct		s_onepath
 typedef struct		s_allpaths
 {
 	int				maxflow;
-	t_onepath		minpath;
+	int				idmin;
+	int				sizemin;
 	t_vect			paths;
 }					t_allpaths;
 
