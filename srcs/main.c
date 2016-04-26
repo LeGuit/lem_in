@@ -30,7 +30,7 @@ int					main(void)
 
 	init_data(&data);
 	get_file(&data);
-	// print_data(&data);
+	print_data(&data);
 	ft_vect_print(&data.input, print_input);
 	ft_printf("\n");
 	path_finding(&data);

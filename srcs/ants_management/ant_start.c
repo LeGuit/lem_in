@@ -47,7 +47,6 @@ static void			on_there_way(t_ant *ants_a, t_data *d, t_allpaths *p)
 	int				i;
 
 	nb_arrived = 0;
-	(void)p;
 	while (nb_arrived < d->nbants)
 	{
 		i = 0;
@@ -56,7 +55,8 @@ static void			on_there_way(t_ant *ants_a, t_data *d, t_allpaths *p)
 		{
 			if (ants_a[i].status == 1)
 				print_ant(&ants_a[i], d);
-			if (ants_a[i].move == ants_a[i].path->size - 1 && ants_a[i].status == 1)
+			if (ants_a[i].move == ants_a[i].path->size - 1
+				&& ants_a[i].status == 1)
 			{
 				nb_arrived++;
 				ants_a[i].status = -1;
@@ -87,7 +87,7 @@ void				ants_invasion(t_allpaths *p, t_data *d)
 			i++;
 			if (i == d->nbants)
 				break ;
-			j++;			
+			j++;
 		}
 	}
 	print_ants_array(ant_array, d->nbants);
