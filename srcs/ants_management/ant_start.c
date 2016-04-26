@@ -21,25 +21,25 @@ static void			init_ant(t_ant *a, int antnb, t_onepath *antpath)
 	a->status = 0;
 }
 
-// static void			send_ants(t_ant *ants_a, t_data *d, t_allpaths *p)
-// {
-// 	int				i;
-// 	int				maxsent;
+static void			send_ants(t_ant *ants_a, t_data *d, t_allpaths *p)
+{
+	int				i;
+	int				maxsent;
 
-// 	i = 0;
-// 	maxsent = p->maxflow;
-// 	while (i < d->nbants)
-// 	{
-// 		if (ants_a[i].status == 0)
-// 		{
-// 			ants_a[i].status = 1;
-// 			maxsent--;
-// 		}
-// 		if (maxsent == 0)
-// 			break ;
-// 		i++;
-// 	}
-// }
+	i = 0;
+	maxsent = p->maxflow;
+	while (i < d->nbants)
+	{
+		if (ants_a[i].status == 0)
+		{
+			ants_a[i].status = 1;
+			maxsent--;
+		}
+		if (maxsent == 0)
+			break ;
+		i++;
+	}
+}
 
 static void			on_there_way(t_ant *ants_a, t_data *d, t_allpaths *p)
 {
@@ -51,20 +51,20 @@ static void			on_there_way(t_ant *ants_a, t_data *d, t_allpaths *p)
 	while (nb_arrived < d->nbants)
 	{
 		i = 0;
-		// send_ants(ants_a, d, p);
+		send_ants(ants_a, d, p);
 		while (i < d->nbants)
 		{
-			if (ants_a[i].status == 0)
+			if (ants_a[i].status == 1)
 				print_ant(&ants_a[i], d);
-			if (ants_a[i].move == ants_a[i].path->size - 1)
+			if (ants_a[i].move == ants_a[i].path->size - 1 && ants_a[i].status == 1)
 			{
 				nb_arrived++;
 				ants_a[i].status = -1;
 			}
 			i++;
 		}
+		ft_putchar('\n');
 	}
-	ft_putchar('\n');
 }
 
 void				ants_invasion(t_allpaths *p, t_data *d)
