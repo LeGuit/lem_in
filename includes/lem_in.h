@@ -31,7 +31,7 @@ typedef struct		s_onepath
 typedef struct		s_allpaths
 {
 	int				maxflow;
-	int				minpath;
+	t_onepath		minpath;
 	t_vect			paths;
 }					t_allpaths;
 
@@ -111,6 +111,10 @@ void				free_bfs(t_bfs *b);
 int					max_flow(int source, int sink, t_bfs *bfs, t_allpaths *ap);
 void				save_path(int start, int end, int *pred, t_allpaths *ap);
 
+/*
+** ANTS INVASION
+*/
+void				ants_invasion(t_allpaths *p, t_data *d);
 /*
 ** DEBUG
 */
