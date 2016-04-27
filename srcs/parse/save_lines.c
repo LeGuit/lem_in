@@ -99,7 +99,7 @@ void				save_hubs(char *line, t_data *d)
 		size++;
 	}
 	if (i == -1 || j == -1)
-		error_hubs();
+		return ;
 	d->matrix[T(R_OUT(i), R_IN(j), d->nbroom * 2)] = 1;
 	d->matrix[T(R_OUT(j), R_IN(i), d->nbroom * 2)] = 1;
 }
