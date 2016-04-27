@@ -60,9 +60,9 @@ int					check_rooms(char *line)
 
 int					check_hubs(char *line)
 {
-	if (!ft_strchr(line, '-'))
-		return (1);
 	if (ft_strchr(line, ' '))
+		return (1);
+	if (!ft_strchr(line, '-'))
 		return (1);
 	return (0);
 }

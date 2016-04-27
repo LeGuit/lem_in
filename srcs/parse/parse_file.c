@@ -19,7 +19,8 @@ static t_check_fct const	g_check_tab[] =
 	[1] = &check_ants,
 	[2] = &check_rooms,
 	[3] = &check_hubs,
-	[4] = &check_nothing
+	[4] = &check_hubs,
+	[5] = &check_nothing
 };
 
 static t_get_fct const		g_get_info[] =
@@ -50,14 +51,14 @@ static int			check_input(t_data *d)
 
 static int			check_func(char *line, t_data *data)
 {
-	int				ret;
-
-	ret = 1;
-	if (g_check_tab[data->state](line)
-		&& (ret = g_check_tab[data->state + 1](line)))
-		return (1);
-	if (!ret)
+	if (g_check_tab[data->state](line))
+	{
 		data->state++;
+		if (data->state == 5)
+			return (1);
+		if (g_check_tab[data->state](line))
+			return (1);
+	}
 	g_get_info[data->state](line, data);
 	return (0);
 }

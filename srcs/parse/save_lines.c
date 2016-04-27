@@ -17,6 +17,8 @@ void				save_com(char *line, t_data *data)
 {
 	size_t			size;
 
+	if (line[1] != '#')
+		return ;
 	size = ft_strlen(line);
 	data->com = (char *)malloc(sizeof(char) * (size + 1));
 	if (!data->com)
@@ -61,6 +63,8 @@ void				init_matrix(char *line, t_data *d)
 	int				i;
 
 	d->matrix = MALLOC(int, (d->nbroom * d->nbroom) * 4);
+	if (!d->matrix)
+		error_malloc();
 	ft_bzero(d->matrix, (d->nbroom * d->nbroom * 4) * sizeof(int));
 	d->state++;
 	i = 0;
